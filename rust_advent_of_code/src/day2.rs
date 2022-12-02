@@ -22,7 +22,7 @@ pub fn day2(){
     scores2.insert(String::from("C Y"), 3+3);
     scores2.insert(String::from("C Z"), 1+6);
 
-    let contents = std::fs::read_to_string("/home/matt/OneDrive/Advent_of_code/files/day2.txt").unwrap();
+    let contents = std::fs::read_to_string("/home/matt/advent_of_code_2022/files/day2.txt").unwrap();
     day2part1(scores, contents.clone());
     day2part2(scores2, contents);
 }
@@ -33,7 +33,7 @@ fn day2part1(scores: std::collections::HashMap<String, i32>, contents: String){
         let t = scores.get(line).unwrap();
         total.push(*t);
     }
-    println!("{}",total.into_iter().sum::<i32>())
+    println!("Day 2 part 1: Total Rock, Paper, Scissors score {}",total.into_iter().sum::<i32>())
 }
 
 fn day2part2(scores: std::collections::HashMap<String, i32>, contents: String){
@@ -42,5 +42,5 @@ fn day2part2(scores: std::collections::HashMap<String, i32>, contents: String){
         let t = scores.get(line).unwrap();
         total.push(*t);
     }
-    println!("{}",total.into_iter().sum::<i32>())
+    println!("Day 2 part 2: Total Rock, Paper, Scissors score {}",total.into_iter().sum::<i32>())
 }

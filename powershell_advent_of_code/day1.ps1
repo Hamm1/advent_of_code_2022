@@ -1,5 +1,5 @@
 
-$get = Get-Content /home/matt/OneDrive/Advent_of_code/files/day1.txt
+$get = Get-Content /home/matt/advent_of_code_2022/files/day1.txt
 foreach($g in $get){
     if($g.Length -eq 0){
         $elf += @($dump)

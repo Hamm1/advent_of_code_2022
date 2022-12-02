@@ -1,5 +1,5 @@
 
-const get = await Deno.readTextFile('/home/matt/OneDrive/Advent_of_code/files//day1.txt')
+const get = await Deno.readTextFile('/home/matt/advent_of_code_2022/files/day1.txt')
 const new_get = get.split("\n").map(function(str) {
     return parseInt(str.replace("","0")); 
 });
