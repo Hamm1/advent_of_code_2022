@@ -22,7 +22,7 @@ async function day2(){
     scores2.set("C Y", 3+3);
     scores2.set("C Z", 1+6);
 
-    const get = await Deno.readTextFile('/home/matt/advent_of_code_2022/files/day2.txt')
+    const get = await Deno.readTextFile('../files/day2.txt')
     const contents = get.split("\n").map(function(str) {
         return str; 
     });

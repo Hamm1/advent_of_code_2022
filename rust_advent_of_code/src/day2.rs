@@ -1,5 +1,5 @@
 
-pub fn day2(){
+pub fn day2(path: String){
     let mut scores = std::collections::HashMap::new();
     scores.insert(String::from("A X"), 3+1);
     scores.insert(String::from("A Y"), 6+2);
@@ -22,7 +22,7 @@ pub fn day2(){
     scores2.insert(String::from("C Y"), 3+3);
     scores2.insert(String::from("C Z"), 1+6);
 
-    let contents = std::fs::read_to_string("/home/matt/advent_of_code_2022/files/day2.txt").unwrap();
+    let contents = std::fs::read_to_string(path).unwrap();
     rps(scores, contents.clone(), "1");
     rps(scores2, contents, "2");
 }

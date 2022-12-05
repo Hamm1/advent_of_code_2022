@@ -1,7 +1,7 @@
 
-pub fn day4(){
+pub fn day4(path: String){
     let start = std::time::Instant::now();
-    let contents = std::fs::read_to_string("/home/matt/advent_of_code_2022/files/day4.txt").unwrap();
+    let contents = std::fs::read_to_string(path).unwrap();
     let mut group: Vec<&str> = vec![];
     let mut total: i32 = 0;
     let mut total2: i32 = 0;

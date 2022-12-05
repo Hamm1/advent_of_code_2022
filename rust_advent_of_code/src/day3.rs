@@ -1,6 +1,6 @@
 
-pub fn day3(){
-    let contents = std::fs::read_to_string("/home/matt/advent_of_code_2022/files/day3.txt").unwrap();
+pub fn day3(path: String){
+    let contents = std::fs::read_to_string(path).unwrap();
     let mut priority = ('a'..='z').into_iter().collect::<Vec<char>>();
     priority.extend(('A'..='Z').into_iter().collect::<Vec<char>>());
     total(priority.clone(),part1(contents.clone()),1);

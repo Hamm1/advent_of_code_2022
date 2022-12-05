@@ -1,6 +1,6 @@
 
-pub fn day1(){
-    let contents = std::fs::read_to_string("/home/matt/advent_of_code_2022/files/day1.txt").unwrap();
+pub fn day1(path: String){
+    let contents = std::fs::read_to_string(path).unwrap();
     let mut elf: Vec<i32> = vec![];
     let mut dump = 0;
     for line in contents.lines(){
