@@ -6,8 +6,11 @@ pub fn day6(path: String){
     parse(contents.clone(),4);
     parse(contents.clone(),14);
     // ! way 2
-    parse2(contents.clone(), 4);
-    parse2(contents, 14);
+    //parse2(contents.clone(), 4);
+    //parse2(contents.clone(), 14);
+    // ! way 3
+    //parse3(contents.clone(), 4);
+    //parse3(contents, 14);
     let duration = start.elapsed();
     println!("Time elapsed is: {:?}", duration);
 }
@@ -77,4 +80,38 @@ fn parse2(contents: String, length: usize){
         };
     }
     println!("{:?}",i+length-1);
+}
+fn parse3(contents: String, length: usize){
+    let group: Vec<char> = contents.chars().collect();
+    let group2: Vec<char> = contents.chars().collect();
+    let mut i = 0;
+    let mut m = 0;
+    for _g in group{
+        let mut new_string: String = "".to_string();
+        let mut check = new_string.len();
+        while check < length {
+            new_string = new_string.to_owned() + &group2[i].to_string();
+            check = new_string.len();
+            i = i + 1;
+        }
+        //println!("{:?}",new_string);
+        m = m + 1;
+        i = m;
+        let mut x = 0;
+        let mut w = 0;
+        let new_vec: Vec<char> = new_string.chars().collect();
+        let new_vec2: Vec<char> = new_string.chars().collect();
+        for new in new_vec{
+            for n in 0..length-1{
+                if new == new_vec2[n]{
+                    w = w + 1;
+                }
+                x = x + 1;
+            }
+        }
+        if w == length-1{
+            println!("{}",i+length-1);
+            break
+        }
+    }
 }
