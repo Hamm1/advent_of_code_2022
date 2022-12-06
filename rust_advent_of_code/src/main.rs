@@ -5,6 +5,7 @@ mod day3;
 mod day4;
 mod day5;
 mod day6;
+mod day7;
 fn main() {
     let path = get_current_working_dir("/advent_of_code_2022");
     day1::day1(path.to_owned() + "advent_of_code_2022/files/day1.txt");
@@ -13,6 +14,7 @@ fn main() {
     day4::day4(path.to_owned() + "advent_of_code_2022/files/day4.txt");
 	day5::day5(path.to_owned() + "advent_of_code_2022/files/day5.txt");
 	day6::day6(path.to_owned() + "advent_of_code_2022/files/day6.txt");
+	day7::day7(path.to_owned() + "advent_of_code_2022/files/day7.txt");
 }
 
 pub fn get_current_working_dir(pattern: &str) -> String {
