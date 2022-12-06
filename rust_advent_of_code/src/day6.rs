@@ -1,20 +1,23 @@
 
 pub fn day6(path: String){
+    let run_other_parts = false;
     let start = std::time::Instant::now();
     let contents = std::fs::read_to_string(path).unwrap();
     // ! way 1
-    parse(contents.clone(),4);
-    parse(contents.clone(),14);
-    // ! way 2
-    //parse2(contents.clone(), 4);
-    //parse2(contents.clone(), 14);
-    // ! way 3
-    //parse3(contents.clone(), 4);
-    //parse3(contents, 14);
+    parse(contents.clone(),4, 1);
+    parse(contents.clone(),14, 2);
+    if run_other_parts{
+        // ! way 2
+        parse2(contents.clone(), 4);
+        parse2(contents.clone(), 14);
+        // ! way 3
+        parse3(contents.clone(), 4);
+        parse3(contents, 14);
+    }
     let duration = start.elapsed();
     println!("Time elapsed is: {:?}", duration);
 }
-fn parse(contents: String, length: usize){
+fn parse(contents: String, length: usize, part: usize){
     let group: Vec<char> = contents.chars().collect();
     let group2: Vec<char> = contents.chars().collect();
     let mut i = 0;
@@ -40,8 +43,8 @@ fn parse(contents: String, length: usize){
             w = w - 1;
             x = x + 1;
             if x == length-1{
-                println!("{:?}",new_vec2);
-                println!("{:?}",i);
+                //println!("{:?}",new_vec2);
+                println!("Day 6 Part {}: Total {:?}",part,i);
                 break 'outer
             }
         }
@@ -76,7 +79,7 @@ fn parse2(contents: String, length: usize){
         //println!("{:?}",new_string);
         match unique(new_string.as_str()){
             None => break,
-            Some((i,j,c)) => continue
+            Some((_i,_j,_c)) => continue
         };
     }
     println!("{:?}",i+length-1);
