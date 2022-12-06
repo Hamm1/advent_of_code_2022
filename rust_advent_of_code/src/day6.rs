@@ -3,16 +3,24 @@ pub fn day6(path: String){
     let run_other_parts = false;
     let start = std::time::Instant::now();
     let contents = std::fs::read_to_string(path).unwrap();
-    // ! way 1
-    parse(contents.clone(),4, 1);
-    parse(contents.clone(),14, 2);
+    let group: Vec<char> = contents.chars().collect();
+    //let contents = include_bytes!("/home/matt/advent_of_code_2022/files/day6.txt");
+    // ! way 5 Wnner for speed and understanding
+    parse5(group.clone(),4, 1);
+    parse5(group,14, 1);
     if run_other_parts{
+        // ! way 1
+        parse(contents.clone(),4, 1);
+        parse(contents.clone(),14, 2);
         // ! way 2
         parse2(contents.clone(), 4);
         parse2(contents.clone(), 14);
         // ! way 3
         parse3(contents.clone(), 4);
-        parse3(contents, 14);
+        parse3(contents.clone(), 14);
+        // ! way 4 Wnner for speed
+        parse4(contents.clone().as_bytes(),4, 1);
+        parse4(contents.as_bytes(),14, 2);
     }
     let duration = start.elapsed();
     println!("Time elapsed is: {:?}", duration);
@@ -116,5 +124,39 @@ fn parse3(contents: String, length: usize){
             println!("{}",i+length-1);
             break
         }
+    }
+}
+fn parse4(contents: &[u8], length: usize, part: usize) {
+    let mut position = 0;
+
+    'outer: loop {
+        for i in (1..length).rev() {
+            let ch = &contents[position + i];
+            for j in (0..i).rev() {
+                if ch == &contents[position + j] {
+                    position += j + 1;
+                    continue 'outer;
+                }
+            }
+        }
+        println!("Day 6 Part {}: Total {:?}",part,position + length);
+        break 'outer
+    }
+}
+fn parse5(contents: Vec<char>, length: usize, part: usize) {
+    let mut position = 0;
+
+    'outer: loop {
+        for i in (1..length).rev() {
+            let ch = &contents[position + i];
+            for j in (0..i).rev() {
+                if ch == &contents[position + j] {
+                    position += j + 1;
+                    continue 'outer;
+                }
+            }
+        }
+        println!("Day 6 Part {}: Total {:?}",part,position + length);
+        break 'outer
     }
 }
