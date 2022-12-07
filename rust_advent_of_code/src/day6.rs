@@ -21,6 +21,9 @@ pub fn day6(path: String){
         // ! way 4 Wnner for speed
         parse4(contents.clone().as_bytes(),4, 1);
         parse4(contents.as_bytes(),14, 2);
+        // ! way 6 OpenAI for the string search with modifications
+        parse6(contents.clone(), 4);
+        parse6(contents.clone(), 14);
     }
     let duration = start.elapsed();
     println!("Time elapsed is: {:?}", duration);
@@ -159,4 +162,35 @@ fn parse5(contents: Vec<char>, length: usize, part: usize) {
         println!("Day 6 Part {}: Total {:?}",part,position + length);
         break 'outer
     }
+}
+fn parse6(contents: String, length: usize){
+    let group: Vec<char> = contents.chars().collect();
+    let group2: Vec<char> = contents.chars().collect();
+    let mut i = 0;
+    let mut m = 0;
+    for _g in group{
+        let mut new_string: String = "".to_string();
+        let mut check = new_string.len();
+        while check < length {
+            new_string = new_string.to_owned() + &group2[i].to_string();
+            check = new_string.len();
+            i = i + 1;
+        }
+        m = m + 1;
+        i = m;
+        if is_unique(&new_string){
+            break
+        }
+    }
+    println!("{:?}",i+length-1);
+}
+fn is_unique(s: &str) -> bool {
+    let mut seen_chars: Vec<char> = vec![];
+    for c in s.chars() {
+        if seen_chars.contains(&c) {
+            return false;
+        }
+        seen_chars.push(c);
+    }
+    return true;
 }
