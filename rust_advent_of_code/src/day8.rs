@@ -52,7 +52,7 @@ pub fn day8(path: String){
             total = total + 1;
             grid_top_to_bottom = grid_top_to_bottom + 1;
         }
-        while grid[grid_bottom_to_top][i] > grid[grid_bottom_to_top][i]{
+        while grid[grid_bottom_to_top][i] > grid[grid_bottom_to_top-1][i]{
             scores.insert(String::from((grid_bottom_to_top-1).to_string() + "," + i.to_string().as_str()), 0);
             // seen.push((grid_bottom_to_top-1).to_string() + "," + i.to_string().as_str());
             total = total + 1;
