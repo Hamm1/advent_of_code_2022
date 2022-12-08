@@ -2,7 +2,7 @@
 pub fn day7(path: String){
     let start = std::time::Instant::now();
     let mut scores = std::collections::HashMap::new();
-    let mut scores2: std::collections::HashMap<String, i32> = std::collections::HashMap::new();
+    //let mut scores2: std::collections::HashMap<String, i32> = std::collections::HashMap::new();
     let contents = std::fs::read_to_string(path).unwrap();
     let mut current_dir: String = "".to_string();
     for line in contents.lines(){
@@ -21,21 +21,21 @@ pub fn day7(path: String){
         if !line.contains("dir") && !line.contains("$"){
             let file: Vec<&str> = line.split(" ").collect();
             scores.insert(String::from(current_dir.to_owned() + " " + file[1]),file[0]);
-            let file2: Vec<&str> = current_dir.split(" ").collect();
-            if file2.len() >= 2{
-                let new = file2[0].to_owned() + " " + file2[1];
-                let value = file[0].parse::<i32>().unwrap();
-                let old_value = scores2.get(&new).unwrap_or(&0);
-                let new_value = old_value + value;
-                scores2.insert(new, new_value);
-            }
-            if current_dir == "/"{
-                println!("hello");
-                let value = file[0].parse::<i32>().unwrap();
-                let old_value = scores2.get("/").unwrap_or(&0);
-                let new_value = old_value + value;
-                scores2.insert("/".to_string(), new_value);
-            }
+            // let file2: Vec<&str> = current_dir.split(" ").collect();
+            // if file2.len() >= 2{
+            //     let new = file2[0].to_owned() + " " + file2[1];
+            //     let value = file[0].parse::<i32>().unwrap();
+            //     let old_value = scores2.get(&new).unwrap_or(&0);
+            //     let new_value = old_value + value;
+            //     scores2.insert(new, new_value);
+            // }
+            // if current_dir == "/"{
+            //     println!("hello");
+            //     let value = file[0].parse::<i32>().unwrap();
+            //     let old_value = scores2.get("/").unwrap_or(&0);
+            //     let new_value = old_value + value;
+            //     scores2.insert("/".to_string(), new_value);
+            // }
         }
         if line.contains("cd .."){
             let reform = current_dir.to_owned();
@@ -51,8 +51,8 @@ pub fn day7(path: String){
         }
     }
     
-    let map = std::collections::HashMap::from(scores2);
-    let map_value: i32 = map.values().sum();
+    // let map = std::collections::HashMap::from(scores2);
+    // let map_value: i32 = map.values().sum();
     let (dir_vec,not_directories) = parse_directory(scores.clone());
     let (overall,overall3) = part1(dir_vec.clone(),not_directories.clone(),scores.clone());
     let needed_value = part2(dir_vec,not_directories,scores,overall3);
@@ -60,7 +60,6 @@ pub fn day7(path: String){
     println!("Day 7: Part 2: {:?}", needed_value);
     let duration = start.elapsed();
     println!("Time elapsed is: {:?}", duration);
-    println!("{:?}", map_value);
 }
 fn parse_directory(scores: std::collections::HashMap<String, &str>) -> (Vec<String>,Vec<String>){
     let iter = scores.clone().into_iter();
@@ -94,7 +93,7 @@ fn part1(dir_vec: Vec<String>,not_directories: Vec<String>,scores: std::collecti
         if check.len() == 2{
             overall3 = overall3 + value;
         }
-        println!("{}",overall3);
+        //println!("{}",overall3);
     };
     return (overall,overall3)
 }
