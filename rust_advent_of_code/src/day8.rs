@@ -112,4 +112,20 @@ pub fn day8(path: String){
     println!("Day 8 part 1: Total {:?}",scores.len());
     let duration = start.elapsed();
     println!("Time elapsed is: {:?}", duration);
+    part2(grid);
+}
+// ! Work in progress...
+fn part2(grid: Vec<Vec<i32>>){
+    let mut right_total: i32 = 0;
+    let mut left_total: i32 = 0;
+    let mut top_total: i32 = 0;
+    let mut bottom_total: i32 = 0;
+    for i in 0..grid.len()-1{
+        for m in  0..grid[0].len()-1{
+            let right_length = grid[1][2];
+            if grid[1][2] > grid[1][2+i]{
+                right_total = right_total + 1
+            }
+        };
+    }
 }
