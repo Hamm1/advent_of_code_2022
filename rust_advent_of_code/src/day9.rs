@@ -1,13 +1,8 @@
 
-
-use std::collections::VecDeque;
-
+#[derive(Debug)]
 struct Rope {
-    // the two-dimensional grid representing the rope
     grid: Vec<Vec<char>>,
-    // the position of the head of the rope
     head: (i32, i32),
-    // the position of the tail of the rope
     tail: (i32, i32),
 }
 
@@ -16,23 +11,24 @@ impl Rope {
         Self { grid, head, tail }
     }
 
-    fn move_head(&mut self, direction: char) {
-        // update the position of the head based on the direction
-        match direction {
-            'U' => self.head.1 -= 1,
-            'D' => self.head.1 += 1,
-            'L' => self.head.0 -= 1,
-            'R' => self.head.0 += 1,
-            _ => {}
+    fn move_head(&mut self, direction: char, spaces: i32) {
+        println!("{:?}",self.head);
+        for _i in 0..spaces{
+            match direction {
+                'U' => self.head.0 -= 1,
+                'D' => self.head.0 += 1,
+                'L' => self.head.1 -= 1,
+                'R' => self.head.1 += 1,
+                _ => {}
+            }
+        
+            println!("{direction},{spaces}");
+            println!("{:?}",self.head);
+            self.update_tail();
         }
-
-        // update the position of the tail based on the new position of the head
-        self.update_tail();
     }
 
     fn update_tail(&mut self) {
-        // if the head and tail are in the same row or column, move the tail one step
-        // in the same direction as the head
         if self.head.0 == self.tail.0 {
             if self.head.1 > self.tail.1 {
                 self.tail.1 += 1;
@@ -46,7 +42,6 @@ impl Rope {
                 self.tail.0 -= 1;
             }
         } else {
-            // otherwise, move the tail one step diagonally to keep up with the head
             if self.head.0 > self.tail.0 {
                 self.tail.0 += 1;
             } else {
@@ -61,14 +56,25 @@ impl Rope {
     }
 }
 
-pub fn day9() {
-    // initialize the rope with a grid and the starting positions of the head and tail
-    // let mut rope = Rope::new(
-    //     vec![
-    //         vec!['.', '.', '.', '.', '.', '.', '.'],
-    //         vec!['.', '.', '.', '.', '.', '.', '.'],
-    //         vec!['.', '.', '.', '.', '.', '.', '.'],
-    //         vec!['.', '.', '.', '.', '.', '.', '.']]);
+pub fn day9(path: String) {
+    let mut grid: Vec<Vec<char>> = vec![];
+    for _amount_of_vectors in 0..5{
+        grid.push(vec![]);  
     }
+    for height in 0..5{
+        let thing: char = '.';
+        for _length in 0..6{
+            grid[height].push(thing);
+        }
+    }
+    let mut rope = Rope::new(grid,(4,0),(4,0));
+    let contents = std::fs::read_to_string(path).unwrap();
+    for line in contents.lines(){
+        let instructions: Vec<&str> = line.split(" ").collect();
+        Rope::move_head(&mut rope, instructions[0].parse::<char>().unwrap(), instructions[1].parse::<i32>().unwrap())
+    }
+    println!("{:?}",rope.head);
+    println!("{:?}",rope.tail);
+}
            
 
