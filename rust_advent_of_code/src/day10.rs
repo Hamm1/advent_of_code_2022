@@ -6,7 +6,6 @@ pub fn day10(path: String){
     let mut cycle = 0;
     let mut overall = 0;
     let mut grid: Vec<Vec<&str>> = vec![];
-    let mut message: String = "".to_string();
     for _amount_of_vectors in 0..5{
         grid.push(vec![]);  
     }
@@ -16,24 +15,18 @@ pub fn day10(path: String){
             grid[height].push(thing);
         }
     }
-    'outer:for line in contents.lines(){
+    for line in contents.lines(){
         if line == "noop"{
             cycle = cycle + 1;
             if cycle == 20 || cycle == 60 || cycle == 100 || cycle == 140 || cycle == 180 || cycle == 220{
-                //break 'outer
                 overall = overall + (cycle * x);
             }
-            //println!("Cycle {cycle} Value {x}");
         } else {
             let new_line = line.replace("addx ", "");
             for _i in 0..2{
                 cycle = cycle + 1;
                 if cycle == 20 || cycle == 60 || cycle == 100 || cycle == 140 || cycle == 180 || cycle == 220{
-                    //break 'outer
                     overall = overall + (cycle * x);
-                }
-                if _i == 0 {
-                    //println!("Cycle {cycle} Value {x}");
                 }
             }
             x = x + new_line.parse::<i32>().unwrap();
@@ -61,5 +54,4 @@ pub fn day10(path: String){
     println!("Day 10 Part 1: {}",overall);
     println!("Time elapsed is: {:?}", start.elapsed());
     println!("{:?}",grid);
-    println!("{:?}", message)
 }
