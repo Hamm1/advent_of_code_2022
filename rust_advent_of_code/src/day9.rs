@@ -86,7 +86,7 @@ pub fn day9(path: String) {
     }
     println!("End Head Position: {:?}",rope.head);
     println!("End Tail Position: {:?}",rope.tail);
-    println!("Day 1 Part 1: Total {:?}",rope.scores.len());
+    println!("Day 9 Part 1: Total {:?}",rope.scores.len());
     println!("Time elapsed is: {:?}", start.elapsed());
 }
            
