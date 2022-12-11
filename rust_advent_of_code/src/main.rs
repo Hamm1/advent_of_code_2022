@@ -10,6 +10,7 @@ mod day8;
 mod day8_I_dont_know;
 mod day9;
 mod day10;
+mod day11;
 fn main() {
     let path = get_current_working_dir("/advent_of_code_2022");
     day1::day1(path.to_owned() + "advent_of_code_2022/files/day1.txt");
@@ -22,6 +23,7 @@ fn main() {
 	day8::day8(path.to_owned() + "advent_of_code_2022/files/day8.txt");
 	day9::day9(path.to_owned() + "advent_of_code_2022/files/day9.txt");
 	day10::day10(path.to_owned() + "advent_of_code_2022/files/day10.txt");
+	day11::day11(path.to_owned() + "advent_of_code_2022/files/day11.txt")
 	//day9::day9();
 	// day8_I_dont_know::day8(path.to_owned() + "advent_of_code_2022/files/day8.txt")
 }
