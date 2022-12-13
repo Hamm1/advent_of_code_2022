@@ -7,11 +7,14 @@ mod day5;
 mod day6;
 mod day7;
 mod day8;
-mod day8_I_dont_know;
+//mod day8_I_dont_know;
 mod day9;
 mod day10;
 mod day11;
 mod day12;
+//mod day12_I_dont_know;
+//mod day12_test;
+mod day13;
 
 fn main() {
     let path = get_current_working_dir("/advent_of_code_2022");
@@ -26,9 +29,11 @@ fn main() {
 	day9::day9(path.to_owned() + "advent_of_code_2022/files/day9.txt");
 	day10::day10(path.to_owned() + "advent_of_code_2022/files/day10.txt");
 	day11::day11(path.to_owned() + "advent_of_code_2022/files/day11.txt");
+	//day12_I_dont_know::day12(path.to_owned() + "advent_of_code_2022/files/day11.txt");
+	//day12_test::day12();
 	day12::day12(path.to_owned() + "advent_of_code_2022/files/day12.txt");
-	//day9::day9();
-	// day8_I_dont_know::day8(path.to_owned() + "advent_of_code_2022/files/day8.txt")
+	day13::day13(path.to_owned() + "advent_of_code_2022/files/day13.txt");
+
 }
 
 pub fn get_current_working_dir(pattern: &str) -> String {
