@@ -14,12 +14,12 @@ for(let i = 0; i < new_get.length; i++){
     }
 }
 const most = Math.max(...elf)
-let index = elf.indexOf(most);
+const index = elf.indexOf(most);
 elf.splice(index,1);
 const most2 = Math.max(...elf)
-let index2 = elf.indexOf(most2);
+const index2 = elf.indexOf(most2);
 elf.splice(index2,1);
 const most3 = Math.max(...elf);
-let index3 = elf.indexOf(most3);
+const index3 = elf.indexOf(most3);
 console.log(`Elf number ${index+1} with ${most} calories`)
 console.log(`Day 2 Part 2: Top 3 snack elves ${index+1}, ${index2+2}, ${index3+1} for a total of ${most + most2 +most3}`)

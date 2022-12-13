@@ -5,14 +5,14 @@ const contents = get.split("\n").map(function(str) {
     return str; 
 });
 
-let total: number = 0;
-let total2: number = 0;
+let total = 0;
+let total2 = 0;
 for(let i = 0; i < contents.length; i++){
-    let group2: number[][] = [];
-    let object: string[] = contents[i].split(",");
+    const group2: number[][] = [];
+    const object: string[] = contents[i].split(",");
     let check = false;
     for(let i = 0; i < object.length; i++){
-        let test = object[i].split("-").map(x=>parseInt(x));
+        const test = object[i].split("-").map(x=>parseInt(x));
         group2.push(test);
     }
     // ! Part 1
@@ -29,7 +29,7 @@ for(let i = 0; i < contents.length; i++){
 
 console.log(`Day 4 Part 1: Full Overlap ${total}`)
 console.log(`Day 4 Part 2: Partial Overlap ${total2}`)
-let elapsed = new Date().getTime() - start;
+const elapsed = new Date().getTime() - start;
 console.log(`Time to run ${elapsed/1000}`)
 
 function parse_group(group2: number[][], total: number,p1: number,p2: number,p3: number,p4: number,p5: number,p6: number,p7: number,p8: number):[number,boolean]{

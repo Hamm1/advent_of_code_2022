@@ -1,6 +1,6 @@
 day2();
 async function day2(){
-    let scores: Map<string,number> = new Map();
+    const scores: Map<string,number> = new Map();
     scores.set("A X", 3+1);
     scores.set("A Y", 6+2);
     scores.set("A Z", 0+3);
@@ -11,7 +11,7 @@ async function day2(){
     scores.set("C Y", 0+2);
     scores.set("C Z", 3+3);
 
-    let scores2: Map<string,number> = new Map();
+    const scores2: Map<string,number> = new Map();
     scores2.set("A X", 3+0);
     scores2.set("A Y", 1+3);
     scores2.set("A Z", 2+6);
@@ -31,9 +31,9 @@ async function day2(){
 }
 
 function rps(scores: Map<string,number>, contents: string[], part: number){
-    let total: number = 0;
+    let total = 0;
     for(let i = 0; i < contents.length; i++){
-        for(let [key, value] of scores.entries()){
+        for(const [key, value] of scores.entries()){
             if (key === contents[i]){
                 total = total + value;
             }

@@ -13,7 +13,7 @@ function isUnique(str: string): boolean {
 async function main(length: number){
     const get = await Deno.readTextFile('../files/day6.txt')
     for(let i = 0; i < get.length; i++){
-        let new_string: string = "";
+        let new_string= "";
         for(let m = i; m < length+i; m++){
             new_string += get.charAt(m);
         }
